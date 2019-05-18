@@ -1,7 +1,7 @@
 import pickle
 import os
 import flask
-from flask import Flask, flash, request, redirect, url_for, jsonify
+from flask import Flask, flash, request, redirect, url_for, jsonify, render_template
 from werkzeug.utils import secure_filename
 import AudioFeaturesExtraction.SingleAudioFeaturesExtraction.getFeatures as getFeature
 app = flask.Flask(__name__)
@@ -10,7 +10,8 @@ app = flask.Flask(__name__)
 model = pickle.load(open("SVM Training And Exporting/model.pkl","rb"),encoding='latin1')
 
 # All audio files uploaded to same directory
-UPLOAD_FOLDER = '/home/avinash/Desktop/GitHub/Audio_Processing/UPLOAD'
+
+UPLOAD_FOLDER = '/Users/bhavanasingh/Music'
 ALLOWED_EXTENSIONS = set(['wav']) # Only all files with wav extension is allowed to submitted
 
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER # Setting the upload folder path
@@ -46,18 +47,8 @@ def upload_file():
 				pre = 'Trumpet'
 			return jsonify(pre)
 				
-			
-			
-			
-	return '''
-	<!doctype html>
-	<title>Upload new File</title>
-	<h1>Upload new File</h1>
-	<form method=post enctype=multipart/form-data>
-	<input type=file name=file>
-	<input type=submit value=Upload>
-	</form>
-	'''
+	return render_template('index.html')
+	
 
 if(__name__ == '__main__'):
 	app.run()

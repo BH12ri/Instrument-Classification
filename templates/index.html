@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head lang="en">
+    <meta charset="UTF-8">
+    <title>Classifier</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href= "{{ url_for('static',filename='css/header-style.css') }}">
+    <!-- styles -->
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,700">
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <div id="cd-logo">
+          <img src="{{ url_for('static',filename='img/play-button.svg') }}" alt="Logo"/>
+          <p>Instrument Classifier</p>
+        </div>
+    </header>
+      <form method=post enctype=multipart/form-data>
+       <input type=file name=file>
+       <input class="predict" type=submit value=Upload>
+      </form>
+      <div class="prediction"></div>
+    </div>
+    <!-- scripts -->
+  </body>
+</html>
