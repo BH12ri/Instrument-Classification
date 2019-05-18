@@ -1,0 +1,45 @@
+nav {
+  float: left;
+  width: 20%;
+  background: #ccc;
+  padding: 20px;
+}
+nav ul {
+  padding: 0;
+}
+nav ul li {
+	cursor:pointer;
+}
+
+article {
+  float: left;
+  padding: 20px;
+  width: 80%;
+  background-color: #f1f1f1;
+}
+
+footer {
+  margin-top: 600px;
+  background-color: #343642;
+  padding: 5px;
+  color: #d4e1f4;
+  text-align:center;
+
+}
+
+@media (max-width: 600px) {
+  nav, article {
+    width: 100%;
+    height: auto;
+  }
+}
+@media only screen and (max-width:1200px)and (min-width: 800px){
+	footer{
+		margin-top:800px;
+	}
+}
+@media only screen and (max-width:801px){
+	footer{
+		margin-top:800px;
+	}
+}

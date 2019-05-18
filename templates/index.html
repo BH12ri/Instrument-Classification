@@ -4,24 +4,56 @@
     <meta charset="UTF-8">
     <title>Classifier</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Styles -->
     <link rel="stylesheet" href= "{{ url_for('static',filename='css/header-style.css') }}">
-    <!-- styles -->
+    <link rel="stylesheet" href= "{{ url_for('static',filename='css/index-css.css') }}">
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,700">
+    
   </head>
   <body>
-    <div class="container">
-      <header>
+  <header>
         <div id="cd-logo">
           <img src="{{ url_for('static',filename='img/play-button.svg') }}" alt="Logo"/>
           <p>Instrument Classifier</p>
         </div>
-    </header>
+  </header>
+  <nav>
+    <h2>Content</h2>
+      <ol>
+      <li>About</li>
+      <li>Upload Your File</li>
+      <li>Contributors</li>
+    </ol>
+  </nav>
+  <article>
+  <h1>Project Description</h1>
+  <hr><hr>
+  <div class="about">
+    <h1>About Project </h1>
+    <p>Just like images, we can extract features that can be used to get a higher-level understanding of the audio. There are some features that have become de-facto in audio processing, and one of these is the Mel-Frequency Cepstrum Coefficients (MFCCs). They give an overview of the shape (or envelope) of the frequency components of the audio based on some perceptual scaling of the frequency domain.</p>
+    <p>MFCCs were specifically developed for speech recognition tasks and so are much more suitable for describing speech signals than a sine wave sweep. So, let's switch to using the JavaSoundAudioGrabber so we can speak into the computer. Secondly, we'll fix the analysis window that we're using. The literature shows that 30ms windows with 10ms overlaps are often used in speech processing. At 44.1KHz, 10ms is 441 samples, so we'll use the FixedSizeSampleAudioProcessor to deal with giving us the appropriate size sample chunks.</p>
+  </div>
+
+  <div class="upload">
       <form method=post enctype=multipart/form-data>
+       <h1>Upload your File here</h1>
        <input type=file name=file>
        <input class="predict" type=submit value=Upload>
       </form>
-      <div class="prediction"></div>
-    </div>
-    <!-- scripts -->
+    <div class="prediction"></div>
+  </div>
+  
+  <div class="contributor">
+    <h1>Contributors</h1>
+    <ul>
+      <li><a href="https://github.com/BH12ri">Bhavana Singh</a></li>
+      <li><a href="https://github.com/Adien7368">Avinash Verma</a></li>
+    </ul>
+  </div>
+
+  </article>
+  <footer>
+      <p>&copy; Copyright 2019 BH12ri & Adien7368</p>
+  </footer>
   </body>
 </html>
