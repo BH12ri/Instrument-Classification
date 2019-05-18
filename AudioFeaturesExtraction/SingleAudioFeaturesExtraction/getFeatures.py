@@ -23,5 +23,5 @@ def getFeature(audio_path):
 	print(len(features[0]))
 	return {"features": features[0]}
 
-print(getFeature('flute-c4.wav'))
+#print(getFeature('flute-c4.wav'))
 

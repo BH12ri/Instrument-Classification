@@ -62,7 +62,7 @@ for i in range(len(TVio)):
 
 
 print("done 4")
-with open('Datasetnotes.csv', 'w') as csvfile:
+with open(directory+'Datasetnotes.csv', 'w') as csvfile:
 	filewriter = csv.writer(csvfile, delimiter=',',quotechar='|',quoting=csv.QUOTE_MINIMAL)
 	ro = ['Class']
 	for i in range(20):
