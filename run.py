@@ -10,8 +10,7 @@ app = flask.Flask(__name__)
 model = pickle.load(open("SVM Training And Exporting/model.pkl","rb"),encoding='latin1')
 
 # All audio files uploaded to same directory
-
-UPLOAD_FOLDER = '/Users/bhavanasingh/Music'
+UPLOAD_FOLDER = os.path.dirname(os.path.abspath(__file__))
 ALLOWED_EXTENSIONS = set(['wav']) # Only all files with wav extension is allowed to submitted
 
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER # Setting the upload folder path
@@ -37,6 +36,7 @@ def upload_file():
 			file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 			feature = getFeature.getFeature(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 			pre = model.predict([feature['features']])[0]
+			os.remove(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 			if(pre == 0):
 				pre = 'Violin'
 			elif(pre == 1):
@@ -45,7 +45,13 @@ def upload_file():
 				pre = 'Piano'
 			else:
 				pre = 'Trumpet'
-			return jsonify(pre)
+			return  '''
+					<html> 
+						<head> 
+							''' + pre + '''
+						</head>
+					</html>
+					'''
 				
 	return render_template('index.html')
 	
